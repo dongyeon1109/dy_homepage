@@ -25,7 +25,7 @@
                 let inputString = prompt("콤마(,)로 구분된 항목을 입력하세요.", "짜장면,짬뽕,치킨,제육,돈까스,떡볶이,쌀국수");
                 if (!inputString) {
                     document.write("뽑기를 취소했습니다.")
-                };else {
+                } else {
                     let items = inputString.split(',')
                     let index = Math.floor(Math.random() * items.length);
                     let choice = items[index];
@@ -41,5 +41,6 @@
     </footer>
     <script src="script.js"></script>
 </body>
+
 
 </html>
