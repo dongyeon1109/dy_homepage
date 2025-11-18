@@ -21,19 +21,20 @@
     </nav>
     <main class="container">
         <section>
-            <script>
-                let inputString = prompt("콤마(,)로 구분된 항목을 입력하세요.", "짜장면,짬뽕,치킨,제육,돈까스,떡볶이,쌀국수");
-                if (!inputString) {
-                    document.write("뽑기를 취소했습니다.")
-                };else {
-                    let items = inputString.split(',')
-                    let index = Math.floor(Math.random() * items.length);
-                    let choice = items[index];
-                    choice = choice.trim();
-                    document.write("입력된 항목:" + items.join(',') + "<br>");
-                    document.write("당신의 선택은<b>:" + choice + "<br>");
-                }
-            </script>
+            <h2>Portfolio</h2>
+            <p>프로젝트/과제 목록을 간단 설명과 함께 적어 주세요.</p>
+            <ol>
+                <li>
+                    <strong>실습 1: D-Day 계산기</strong><br>
+                    설명: Date 객체를 활용하여 D-Day를 계산합니다.
+                    — <a href="dday.html">페이지 바로가기</a>
+                </li>
+                <li>
+                    <strong>실습 2: 랜덤 뽑기</strong><br>
+                    설명: String, Array, Math 객체를 조합한 랜덤 뽑기입니다.
+                    — <a href="random.html">페이지 바로가기</a>
+                </li>
+            </ol>
         </section>
     </main>
     <footer>
