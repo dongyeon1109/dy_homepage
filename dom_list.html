@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>인터넷활용 실습 템플릿</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        button {
+            padding: 10px 15px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: rgb(9, 184, 111);
+            border: 2px solid rgb(38, 238, 138);
+            border-radius: 5px;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <h3>댓글 목록</h3>
+    <hr>
+    <button onclick="addComment()">댓글 추가하기</button>
+    <ul id="commentList"></ul>
+    <script>
+         var inputStr = prompt("추가할 댓글 내용을 입력하세요:", "오늘 수업 너무 재밌었어요!");
+        function addComment() {
+            var inputStr = prompt("추가할 댓글 내용을 입력하세요:", "오늘 수업 너무 재밌었어요!");
+            if (inputStr != null && inputStr.trim() !== "") {
+                var parent = document.getElementById("commentList");
+                var newLi = document.createElement("li");
+                newLi.innerHTML = inputStr;
+                newLi.onclick = function () {
+                    var p = this.parentElement;
+                    p.removeChild(this);
+                };
+                parent.appendChild(newLi);
+            }
+        }
+    </script>
+    <main class="container">
+    </main>
+    <footer>
+        <small>&copy; <span id="year"></span> 이름: (여기에 추가)</small>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
