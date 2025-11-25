@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>인터넷활용 실습 템플릿</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            padding: 60px;
+        }
+
+        #target {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 20px;
+            border: 2px solid greenyellow;
+            margin: 20px;
+            width: 70%;
+            transition: all 0.3s;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: antiquewhite;
+            border: 2px solid blue;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="target">이 문장의 스타일을 바꿔보세요</p>
+    <button onclick="changeColor()">글자색 변경</button>
+    <button onclick="changeSize()">크게 보기</button>
+    <button onclick="changeBackground()">배경 강조</button>
+    <button onclick="changeStyle()">숨기기,보이기</button>
+    <script>
+        function changeColor() { document.getElementById("target").style.color = "red"; }
+        function changeSize() { document.getElementById("target").style.fontSize = "32px"; }
+        function changeBackground() { document.getElementById("target").style.backgroundColor = "yellow"; }
+        function changeStyle() {
+            var obj = document.getElementById("target");
+            if (obj.style.display == "none") { obj.style.display = "block"; } else { obj.style.display = "none"; }
+        }
+    </script> function changeColor(){document.getElementById("target").style.color="red"}
+
+
+    <main class="container">
+        </section>
+    </main>
+    <footer>
+        <small>&copy; <span id="year"></span> 이름: (여기에 추가)</small>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
