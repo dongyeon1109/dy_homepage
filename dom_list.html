@@ -1,52 +1,112 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>인터넷활용 실습 템플릿</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 2: 댓글 추가/삭제</title>
+
     <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            padding: 40px;
+            background: #E8F5E9; 
+        }
+
+        h3 {
+            text-align: center;
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center;
+            color: #388E3C;
+        }
+
+
         button {
-            padding: 10px 15px;
-            font-size: 20px;
-            margin: 10px;
+            display: block;
+            margin: 20px auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
             cursor: pointer;
-            background-color: rgb(9, 184, 111);
-            border: 2px solid rgb(38, 238, 138);
-            border-radius: 5px;
-            color: rgb(255, 255, 255);
+            transition: 0.2s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            background-color: #2E7D32;
+            transform: scale(1.03);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        li {
+            background-color: white;
+            margin: 8px 0;
+            padding: 12px 15px;
+            border: 2px solid #A5D6A7;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            color: #1B5E20;
+
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: 0.2s;
+        }
+
+        li:hover {
+            background-color: #C8E6C9;
+            border-color: #66BB6A;
+        }
+
+  
+        li:hover::after {
+            content: "  (클릭 시 삭제)";
+            color: #D32F2F;
+            font-weight: bold;
+            font-size: 0.9em;
         }
     </style>
-</head>
 
-<body>
-    <h3>댓글 목록</h3>
-    <hr>
-    <button onclick="addComment()">댓글 추가하기</button>
-    <ul id="commentList"></ul>
     <script>
-         var inputStr = prompt("추가할 댓글 내용을 입력하세요:", "오늘 수업 너무 재밌었어요!");
+
         function addComment() {
-            var inputStr = prompt("추가할 댓글 내용을 입력하세요:", "오늘 수업 너무 재밌었어요!");
-            if (inputStr != null && inputStr.trim() !== "") {
-                var parent = document.getElementById("commentList");
-                var newLi = document.createElement("li");
-                newLi.innerHTML = inputStr;
-                newLi.onclick = function () {
-                    var p = this.parentElement;
-                    p.removeChild(this);
-                };
-                parent.appendChild(newLi);
-            }
+            var inputStr = prompt("추가할 댓글 내용을 입력하세요:", "오늘 수업 너무 재밌어요!");
+
+            if (inputStr == null || inputStr.trim() == "") return;
+
+            var parent = document.getElementById("commentList");
+            var newLi = document.createElement("li");
+            newLi.innerHTML = inputStr;
+
+            newLi.onclick = function () {
+                var p = this.parentElement;
+                p.removeChild(this);
+            };
+
+            parent.appendChild(newLi);
         }
     </script>
-    <main class="container">
-    </main>
-    <footer>
-        <small>&copy; <span id="year"></span> 이름: (여기에 추가)</small>
-    </footer>
-    <script src="script.js"></script>
-</body>
+</head>
 
+<body onload="addComment()">
+
+    <h3> 실습 2: 댓글 추가/삭제 프로그램</h3>
+    <p>목록을 클릭하면 해당 댓글이 삭제됩니다.</p>
+    <hr style="max-width: 600px; margin: 20px auto; border-color: #C5E1A5;">
+
+    <button onclick="addComment()">+ 댓글 추가하기</button>
+    <ul id="commentList"></ul>
+
+</body>
 </html>

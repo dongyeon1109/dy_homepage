@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>실습 2: 키보드 자동차</title>
+    <style>
+        body {
+            height: 100vh;
+            overflow: hidden;
+            background: #E8F5E9;  
+            font-family: "Segoe UI", sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #2E7D32; 
+            margin-top: 10px;
+        }
+
+        p {
+            text-align: center;
+            color: #388E3C;
+        }
+
+        #car {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            width: 90px;
+            height: 45px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32); /* 초록 그라데이션 */
+            border-radius: 10px;
+            border: 2px solid #1B5E20;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            line-height: 45px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        #info {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 15px 20px;
+            background: white;
+            color: #2E7D32;
+            border-radius: 10px;
+            border: 2px solid #A5D6A7;
+            font-size: 14px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+
+    <script>
+        var x = 100;
+        var y = 100;
+        var step = 10;
+
+        window.onload = function() {
+            var car = document.getElementById("car");
+            var info = document.getElementById("info");
+
+            document.onkeydown = function(e) {
+
+                switch(e.keyCode) {
+                    case 37: // Left
+                        x -= step;
+                        break;
+                    case 38: // Up
+                        y -= step;
+                        break;
+                    case 39: // Right
+                        x += step;
+                        break;
+                    case 40: // Down
+                        y += step;
+                        break;
+                }
+
+    
+                car.style.left = x + "px";
+                car.style.top = y + "px";
+
+      
+                info.innerHTML = `현재 좌표 (x, y) = (${x}, ${y})`;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h3> 실습 2: 키보드 자동차</h3>
+    <p>방향키(←, ↑, →, ↓)를 눌러 자동차를 움직여보세요!</p>
+
+    <div id="car">CAR</div>
+    <div id="info">현재 좌표 (x, y) = (100, 100)</div>
+</body>
+</html>
