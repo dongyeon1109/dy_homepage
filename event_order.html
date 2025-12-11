@@ -6,7 +6,8 @@
     <title>스마트 피자 주문서</title>
     <style>
         body {
-            background: #E8F5E9; /* 은은한 연녹색 */
+            background: #E8F5E9;
+            /* 은은한 연녹색 */
             font-family: "Segoe UI", "Pretendard", sans-serif;
             margin: 0;
             padding: 30px;
@@ -24,8 +25,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h2 {
@@ -65,7 +73,8 @@
         input[type="checkbox"] {
             width: 20px;
             height: 20px;
-            accent-color: #43A047; /* 초록색 체크박스 */
+            accent-color: #43A047;
+            /* 초록색 체크박스 */
             cursor: pointer;
         }
 
@@ -148,8 +157,9 @@
 </head>
 
 <body>
+     <form action="#" onsubmit="return validate(event)">
     <div id="menu_box">
-        <h4>메뉴 [선택]</h4>
+        <h4>[메뉴 선택]</h4>
         <div>
             <input type="checkbox" class="menu-check" value="15000" onchange="recalc()">콤비네이션 피자 (15,000원)
             <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">개
@@ -159,12 +169,21 @@
             <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">개
         </div>
         <div>
-            <input type="checkbox" class="menu-check" value="2000" onchange="recalc()">치즈 토핑 추가 (1,500원)
+            <input type="checkbox" class="menu-check" value="2000" onchange="recalc()">치즈 토핑 추가 (2,000원)
             <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">개
         </div>
         <div>
-            <input type="checkbox" class="menu-check" value="1500" onchange="recalc()">콜라 1.25L (15000원)
+            <input type="checkbox" class="menu-check" value="1500" onchange="recalc()">콜라 1.25L (1,500원)
             <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">개
         </div>
     </div>
+    배달 주소: <input type="text" id="addr" size="50" onblur="checkAddress()" placeholder="주소를 입력하세요">
+    <br><br>
+
+    주문 합계: <input type="text" id="total" value="0" readonly> 원
+    <br><br>
+
+    <input type="submit" value="주문하기">
+    <input type="reset" value="초기화" onclick="setTimeout(recalc, 0)">
+    </form>
 </body>
