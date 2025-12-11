@@ -103,7 +103,7 @@
 
 <main class="container">
 <section>
-  <h2>String + Array + Math 조합: 내맘대로 랜덤 뽑기</h2>
+  <h2>내맘대로 랜덤 뽑기</h2>
 
   <script>
     let defaultList = "짜장면,짬뽕,치킨,제육,돈까스,떡볶이,쌀국수";
@@ -116,12 +116,12 @@
       let index = Math.floor(Math.random() * items.length);
       let choice = items[index].trim();
 
-      document.write("<h3>입력한 항목 (총 " + items.length + "개):</h3>");
+      document.write("<h3>입력하신 항목 (총 " + items.length + "개):</h3>");
       document.write("<p>" + inputString + "</p>");
       document.write("<hr>");
-      document.write("<h3> 당신의 선택은...</h3>");
+      document.write("<h3> 당신의 선택은</h3>");
 
-      document.write("<div class='result'>" + choice + " !!!</div>");
+      document.write("<div class='result'>" + choice + " !</div>");
       document.write("<p style='text-align:center;'><i>새로고침(F5)을 눌러 다시 뽑을 수 있습니다.</i></p>");
     }
   </script>
