@@ -1,91 +1,108 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <title>스마트 피자 주문서</title>
     <style>
         body {
-            background: #F1F8E9;
-            font-family: 'Segoe UI', sans-serif;
+            background: #E8F5E9; /* 은은한 연녹색 */
+            font-family: "Segoe UI", "Pretendard", sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 30px;
         }
 
-        h3 {
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: #FFFFFF;
+            padding: 35px 40px;
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            border: 1px solid #C8E6C9;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
             text-align: center;
             color: #2E7D32;
-            margin-bottom: 10px;
+            margin-bottom: 28px;
+            font-size: 28px;
+            font-weight: 700;
         }
 
-        #menu_box, form {
-            background: white;
+        .menu-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 10px;
             border-radius: 10px;
-            padding: 20px;
-            max-width: 600px;
-            margin: 10px auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-bottom: 10px;
+            background: #F1F8F4;
+            border: 1px solid #C8E6C9;
+            transition: 0.25s;
         }
 
-        #menu_box h4 {
-            color: #4CAF50;
-            margin-bottom: 15px;
+        .menu-row:hover {
+            background: #E3F2E7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
         }
 
-        .menu-item {
+        .menu-label {
+            font-size: 17px;
+            color: #1B5E20;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #E8F5E9;
+            gap: 10px;
         }
 
-        .menu-item:last-child {
-            border-bottom: none;
-        }
-
-        .menu-desc {
-            font-size: 15px;
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #43A047; /* 초록색 체크박스 */
+            cursor: pointer;
         }
 
         input[type="number"] {
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #A5D6A7;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        input[type="text"] {
-            padding: 8px;
-            border: 1px solid #A5D6A7;
-            border-radius: 5px;
-            width: 80%;
-        }
-
-        input[type="submit"], input[type="reset"] {
-            background: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
+            width: 55px;
+            padding: 7px;
             border-radius: 8px;
-            cursor: pointer;
-            margin-right: 10px;
+            border: 1px solid #A5D6A7;
+            background: #FFFFFF;
             font-size: 15px;
+            text-align: center;
             transition: 0.2s;
         }
 
-        input[type="submit"]:hover, 
-        input[type="reset"]:hover {
-            background: #388E3C;
+        input[type="number"]:focus {
+            border-color: #43A047;
+            box-shadow: 0 0 6px rgba(67, 160, 71, 0.4);
+            outline: none;
         }
 
+        #total-box {
+            margin-top: 25px;
+            text-align: right;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2E7D32;
+        }
 
         #total {
-            width: 120px;
-            text-align: right;
-            padding-right: 10px;
+            width: 150px;
+            padding: 10px;
             background: #E8F5E9;
-            border: 1px solid #A5D6A7;
+            border: 2px solid #81C784;
+            border-radius: 8px;
+            font-size: 20px;
+            text-align: right;
+            color: #2E7D32;
         }
     </style>
 
@@ -131,57 +148,23 @@
 </head>
 
 <body>
-    <h3>피자 주문서</h3>
-
-    <form action="#" onsubmit="return validate(event)">
-        <div id="menu_box">
-            <h4>[메뉴 선택]</h4>
-
-            <div class="menu-item">
-                <label class="menu-desc">
-                    <input type="checkbox" class="menu-check" value="15000" onchange="recalc()">
-                    콤비네이션 피자 (15,000원)
-                </label>
-                <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">
-            </div>
-
-            <div class="menu-item">
-                <label class="menu-desc">
-                    <input type="checkbox" class="menu-check" value="12000" onchange="recalc()">
-                    페퍼로니 피자 (12,000원)
-                </label>
-                <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">
-            </div>
-
-            <div class="menu-item">
-                <label class="menu-desc">
-                    <input type="checkbox" class="menu-check" value="2000" onchange="recalc()">
-                    치즈 토핑 추가 (2,000원)
-                </label>
-                <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">
-            </div>
-
-            <div class="menu-item">
-                <label class="menu-desc">
-                    <input type="checkbox" class="menu-check" value="1500" onchange="recalc()">
-                    콜라 1.25L (1,500원)
-                </label>
-                <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">
-            </div>
+    <div id="menu_box">
+        <h4>메뉴 [선택]</h4>
+        <div>
+            <input type="checkbox" class="menu-check" value="15000" onchange="recalc()">콤비네이션 피자 (15,000원)
+            <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">개
         </div>
-
-        <p>
-            <strong>배달 주소:</strong><br>
-            <input type="text" id="addr" placeholder="주소를 입력하세요" onblur="checkAddress()">
-        </p>
-
-        <p>
-            <strong>주문 합계:</strong>
-            <input type="text" id="total" value="0" readonly> 원
-        </p>
-
-        <input type="submit" value="주문하기">
-        <input type="reset" value="초기화" onclick="setTimeout(recalc, 0)">
-    </form>
+        <div>
+            <input type="checkbox" class="menu-check" value="12000" onchange="recalc()">페퍼로니 피자 (12,000원)
+            <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">개
+        </div>
+        <div>
+            <input type="checkbox" class="menu-check" value="2000" onchange="recalc()">치즈 토핑 추가 (1,500원)
+            <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">개
+        </div>
+        <div>
+            <input type="checkbox" class="menu-check" value="1500" onchange="recalc()">콜라 1.25L (15000원)
+            <input type="number" class="menu-qty" value="1" min="1" onchange="recalc()" onkeyup="recalc()">개
+        </div>
+    </div>
 </body>
-</html>
