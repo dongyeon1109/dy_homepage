@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <title>실습 2: 키보드 자동차</title>
@@ -7,7 +8,7 @@
         body {
             height: 100vh;
             overflow: hidden;
-            background: #E8F5E9;  
+            background: #E8F5E9;
             font-family: "Segoe UI", sans-serif;
             margin: 0;
             padding: 20px;
@@ -15,29 +16,51 @@
 
         h3 {
             text-align: center;
-            color: #2E7D32; 
+            color: #2E7D32;
             margin-top: 10px;
+            font-size: 28px;
         }
 
         p {
             text-align: center;
             color: #388E3C;
+            font-size: 16px;
         }
 
         #car {
             position: absolute;
             left: 100px;
             top: 100px;
-            width: 90px;
-            height: 45px;
-            background: linear-gradient(135deg, #4CAF50, #2E7D32); /* 초록 그라데이션 */
-            border-radius: 10px;
+            width: 100px;
+            height: 50px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            border-radius: 15px;
             border: 2px solid #1B5E20;
             color: white;
             font-weight: bold;
             text-align: center;
-            line-height: 45px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            line-height: 50px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+            transition: left 0.1s, top 0.1s;
+        }
+
+        #car::before,
+        #car::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #1B5E20;
+            border-radius: 50%;
+            bottom: -10px;
+        }
+
+        #car::before {
+            left: 10px;
+        }
+
+        #car::after {
+            right: 10px;
         }
 
         #info {
@@ -47,10 +70,10 @@
             padding: 15px 20px;
             background: white;
             color: #2E7D32;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 2px solid #A5D6A7;
             font-size: 14px;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
     </style>
 
@@ -59,13 +82,13 @@
         var y = 100;
         var step = 10;
 
-        window.onload = function() {
+        window.onload = function () {
             var car = document.getElementById("car");
             var info = document.getElementById("info");
 
-            document.onkeydown = function(e) {
+            document.onkeydown = function (e) {
 
-                switch(e.keyCode) {
+                switch (e.keyCode) {
                     case 37: // Left
                         x -= step;
                         break;
@@ -80,11 +103,11 @@
                         break;
                 }
 
-    
+
                 car.style.left = x + "px";
                 car.style.top = y + "px";
 
-      
+
                 info.innerHTML = `현재 좌표 (x, y) = (${x}, ${y})`;
             }
         }
@@ -98,4 +121,5 @@
     <div id="car">CAR</div>
     <div id="info">현재 좌표 (x, y) = (100, 100)</div>
 </body>
+
 </html>
